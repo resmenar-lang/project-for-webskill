@@ -1,0 +1,73 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MyAvaloniaApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+        x:Class="MyAvaloniaApp.Views.MainWindow"
+        Title="Переглядач колекцій зображень"
+        Width="900" Height="650"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="15">
+        <!-- 4. Керування навігацією (Верхня панель) -->
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto, Auto" Margin="0,0,0,15">
+            <TextBox Name="PathsTextBox" 
+                     PlaceholderText="Введіть шляхи до каталогів через '@' (наприклад: C:\Folder1@D:\Images)" 
+                     VerticalAlignment="Center"
+                     Margin="0,0,10,0"/>
+            <Button Grid.Column="1" 
+                    Content="Завантажити" 
+                    Name="LoadButton"
+                    Padding="15,8" 
+                    Margin="0,0,10,0"
+                    Background="#2d7d32" Foreground="White"/>
+            <Button Grid.Column="2" 
+                    Content="Закрити програму" 
+                    Name="CloseButton"
+                    Padding="15,8"
+                    Background="#c62828" Foreground="White"/>
+        </Grid>
+
+        <!-- 2. Відображення зображень + 5. Інтерактивні кнопки (Центральна зона) -->
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, *, Auto">
+            <!-- Кнопка Назад -->
+            <Button Grid.Column="0" 
+                    Content="◀ Назад" 
+                    Name="PrevButton"
+                    VerticalAlignment="Stretch" 
+                    VerticalContentAlignment="Center"
+                    Padding="15,0" Margin="0,0,15,0"/>
+            
+            <!-- Контейнер для фото -->
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Background="#1e1e1e">
+                <Image Name="ImageDisplay" 
+                       Stretch="Uniform" 
+                       Margin="10"/>
+            </Border>
+
+            <!-- Кнопка Вперед -->
+            <Button Grid.Column="2" 
+                    Content="Вперед ▶" 
+                    Name="NextButton"
+                    VerticalAlignment="Stretch" 
+                    VerticalContentAlignment="Center"
+                    Padding="15,0" Margin="15,0,0,0"/>
+        </Grid>
+
+        <!-- 3. Інформація про зображення (Нижня панель) -->
+        <Border Grid.Row="2" 
+                Background="#2d2d2d" 
+                BorderBrush="Gray" 
+                BorderThickness="1" 
+                CornerRadius="4" 
+                Margin="0,15,0,0" 
+                Padding="12">
+            <TextBlock Name="InfoTextBlock" 
+                       Text="Будь ласка, вкажіть шляхи до папок та натисніть 'Завантажити'." 
+                       FontSize="14" 
+                       Foreground="LightGray" 
+                       TextWrapping="Wrap"/>
+        </Border>
+    </Grid>
+</Window>
